@@ -10,7 +10,7 @@ ressemble au résultat suivant :
 
 package fr.fms.thread;
 
-public class TestThread extends Thread {
+public class TestThread extends Thread {      //Testthread hérite de la classe Thread
 	
 	//Constructeur 
 	public TestThread(String name) {   //Le constructeur prend un nom en paramètre 
@@ -20,14 +20,15 @@ public class TestThread extends Thread {
 
 	 // Méthode run(): méthode à redéfinir pour y placer le fonctionnement du thread
     public void run() {
-        for (int i = 0; i < 4 ; i++) {
+        for (int i = 0; i < 4; i++) {
+        	 
             System.out.print(this.getName() + " " ); //une boucle pour imprimer le nom du thread suivi d'un espace.
-            try {
-                // Methode sleep pour introduire un délai entre les threads* 
+            try {          //Le bloc try encadre le code où une exception peut être levée. Dans ce cas, l'exception qui peut être levée est InterruptedException.
+                // Methode sleep pour introduire un délai (en millisecondes) entre les threads* -> run() en pause pendant la durée spécifiée
                 Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();    //La méthode printStackTrace() en Java est un outil utilisé pour gérer les exceptions et les erreurs. Il s’agit d’une méthode de la classe « throwable » de Java qui affiche l’exception avec d’autres détails comme le numéro de ligne et le nom de la classe où l’exception s’est produite.
-                //System.out.println();  
+            } catch (InterruptedException e) {       //Catch est exécuté si une exception de type InterruptedException est t pendant l'exécution du bloc try. 
+                e.printStackTrace();    //La méthode printStackTrace()est un outil utilisé pour imprimer la trace des exceptions et les erreurs. ça affiche l’exception avec le numéro de ligne et le nom de la classe où l’exception s’est produite.
+                
             }
             System.out.println();
         }
